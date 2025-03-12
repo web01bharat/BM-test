@@ -1,0 +1,28 @@
+{
+  "name": "shopify-theme-template",
+  "version": "1.0.0",
+  "description": "A template for Shopify theme development",
+  "scripts": {
+    "dev": "shopify theme dev --path=theme",
+    "pull": "shopify theme pull --path=theme",
+    "push": "shopify theme push --path=theme",
+    "check": "shopify theme check --path=theme",
+    "setup": "bash scripts/setup-theme.sh",
+    "watch": "cd theme && npm run watch",
+    "build": "cd theme && npm run build",
+    "lint": "cd theme && npm run lint",
+    "format": "prettier --write \"theme/**/*.{js,json,liquid,scss}\"",
+    "setup-scss": "bash scripts/setup-scss.sh",
+    "scaffold-section": "bash scripts/scaffold-section.sh"
+  },
+  "keywords": ["shopify", "theme", "development"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@shopify/prettier-plugin-liquid": "^1.0.6",
+    "@shopify/theme-check": "^1.1.0",
+    "eslint": "^8.36.0",
+    "prettier": "^2.8.4",
+    "sass": "^1.58.3"
+  }
+}
