@@ -47,69 +47,8 @@ A standardized development environment and workflow for Shopify themes.
 
 ## Project Structure
 
+```
 theme/
-├── assets/
-├── config/
-├── layout/
-├── locales/
-├── sections/
-├── snippets/
-└── templates/
-scripts/
-docs/
-.github/
-
-```markdown
-# Shopify Theme Development Template
-
-A standardized development environment and workflow for Shopify themes.
-
-## Features
-
-* Local development with hot reloading
-* SCSS preprocessing
-* Theme Check linting
-* GitHub Actions for CI/CD
-* Streamlined authentication and deployment
-
-## Quick Start
-
-1.  **Clone the repository:**
-
-    ```bash
-    git clone <repository_url>
-    cd <repository_name>
-    ```
-
-2.  **Install dependencies:**
-
-    ```bash
-    npm install
-    ```
-
-3.  **Set up the theme:**
-
-    * For a new theme:
-
-        ```bash
-        npm run setup-new
-        ```
-
-    * For an existing theme:
-
-        ```bash
-        npm run setup-existing
-        ```
-
-4.  **Start development:**
-
-    ```bash
-    npm run dev
-    ```
-
-## Project Structure
-
-```theme/
 ├── assets/
 ├── config/
 ├── layout/
@@ -192,4 +131,3 @@ docs/
 * [Shopify Theme Development Documentation](https://shopify.dev/docs/themes)
 * [Liquid Template Language](https://shopify.dev/docs/themes/liquid)
 * [Shopify CLI Documentation](https://shopify.dev/docs/themes/tools/cli)
-```
