@@ -1,19 +1,18 @@
-
-## 2. Add SCSS Configuration
-
-Create a basic SCSS setup:
-
-```bash
 #!/bin/bash
 
-# Create SCSS directory structure
-mkdir -p theme/assets/scss
-mkdir -p theme/assets/scss/components
-mkdir -p theme/assets/scss/layout
-mkdir -p theme/assets/scss/utils
+# Script to set up SCSS structure in the scss directory (not uploaded to Shopify)
+# and compile to assets/theme.css (which will be uploaded to Shopify)
+
+echo "Setting up SCSS structure..."
+
+# Create SCSS directory structure (source files - not uploaded to Shopify)
+mkdir -p scss
+mkdir -p scss/components
+mkdir -p scss/layout
+mkdir -p scss/utils
 
 # Create main SCSS file
-cat > theme/assets/scss/theme.scss << EOL
+cat > scss/theme.scss << EOL
 /*
 * Shopify Theme SCSS Main File
 */
@@ -33,8 +32,8 @@ cat > theme/assets/scss/theme.scss << EOL
 @import "components/navigation";
 EOL
 
-# Create basic utility files
-cat > theme/assets/scss/utils/_variables.scss << EOL
+# Create utility files
+cat > scss/utils/_variables.scss << EOL
 // Colors
 \$color-primary: #000000;
 \$color-secondary: #333333;
@@ -46,7 +45,7 @@ cat > theme/assets/scss/utils/_variables.scss << EOL
 \$font-heading: \$font-body;
 EOL
 
-cat > theme/assets/scss/utils/_mixins.scss << EOL
+cat > scss/utils/_mixins.scss << EOL
 @mixin flex-center {
   display: flex;
   align-items: center;
@@ -70,23 +69,45 @@ cat > theme/assets/scss/utils/_mixins.scss << EOL
 }
 EOL
 
-# Create basic package.json for SCSS compilation
-cat > theme/package.json << EOL
-{
-  "name": "shopify-theme",
-  "version": "1.0.0",
-  "description": "Shopify theme with SCSS",
-  "scripts": {
-    "build": "sass --style=compressed assets/scss/theme.scss:assets/theme.css",
-    "watch": "sass --watch --style=expanded assets/scss/theme.scss:assets/theme.css",
-    "lint": "stylelint \"assets/scss/**/*.scss\""
-  },
-  "devDependencies": {
-    "sass": "^1.58.3",
-    "stylelint": "^15.2.0",
-    "stylelint-config-standard-scss": "^7.0.1"
-  }
-}
+# Create empty layout files
+cat > scss/layout/_header.scss << EOL
+// Header styles
 EOL
 
+cat > scss/layout/_footer.scss << EOL
+// Footer styles
+EOL
+
+cat > scss/layout/_grid.scss << EOL
+// Grid system styles
+EOL
+
+# Create empty component files
+cat > scss/components/_buttons.scss << EOL
+// Button styles
+EOL
+
+cat > scss/components/_forms.scss << EOL
+// Form styles
+EOL
+
+cat > scss/components/_navigation.scss << EOL
+// Navigation styles
+EOL
+
+# Ensure the assets directory exists
+mkdir -p assets
+
+# Compile SCSS to CSS
+if command -v sass &> /dev/null; then
+  echo "Compiling SCSS to CSS..."
+  sass --style=compressed scss/theme.scss:assets/theme.css
+else
+  echo "Warning: sass is not installed. Please run 'npm install' to install dependencies."
+  echo "Then run 'npm run build' to compile SCSS to CSS."
+fi
+
 echo "SCSS setup complete!"
+echo "Source SCSS files are in the scss/ directory (not uploaded to Shopify)"
+echo "Compiled CSS is in assets/theme.css (will be uploaded to Shopify)"
+echo "Run 'npm run watch' to automatically compile SCSS to CSS when files change"

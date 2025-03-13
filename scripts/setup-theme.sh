@@ -3,7 +3,8 @@
 
 #!/bin/bash
 
-# Script to set up a new Shopify theme project with improved options
+# Script to set up a new Shopify theme project with the files at repository root
+# Updated for GitHub integration compatibility (requires theme files at root)
 
 echo "Setting up Shopify theme project..."
 
@@ -42,8 +43,7 @@ fi
 
 PROJECT_NAME=$(basename $(pwd))
 
-# Create directory structure
-mkdir -p theme
+# Create directory structure for project organization (not theme files)
 mkdir -p scripts
 mkdir -p docs
 
@@ -54,7 +54,7 @@ if [ ! -d ".git" ]; then
   echo ".DS_Store" >> .gitignore
   echo ".env" >> .gitignore
   echo ".theme-check.yml" >> .gitignore
-  echo "theme/.shopifyignore" >> .gitignore
+  echo ".shopifyignore" >> .gitignore
 fi
 
 # Create env file
@@ -72,25 +72,27 @@ fi
 # If theme ID is provided, pull existing theme
 if [ -n "$THEME_ID" ]; then
   echo "Pulling existing theme (ID: $THEME_ID) from $STORE_URL..."
-  shopify theme pull --store="$STORE_URL" --theme="$THEME_ID" --path=theme
+  shopify theme pull --store="$STORE_URL" --theme="$THEME_ID" --path=.
 else
-  # Initialize new theme
-  echo "Initializing new theme in theme directory..."
-  shopify theme init theme --path=theme
+  # Initialize new theme at root directory
+  echo "Initializing new theme at repository root..."
+  shopify theme init --path=.
 fi
 
 # Create a .theme-check.yml configuration
 cat > .theme-check.yml << EOL
-root: theme/
+root: ./
 ignore:
   - node_modules/
+  - scripts/
+  - docs/
 EOL
 
 # Start development server if --dev flag is provided
 if [ "$DEV_MODE" = true ]; then
   echo "Starting development server..."
-  cd theme && shopify theme dev --store="$STORE_URL"
+  shopify theme dev --store="$STORE_URL"
 else
   echo "Theme setup complete!"
-  echo "To start development, run: cd theme && shopify theme dev --store=$STORE_URL"
+  echo "To start development, run: shopify theme dev --store=$STORE_URL"
 fi
