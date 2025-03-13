@@ -4,3 +4,4 @@ node_modules/
 .theme-check.yml
 .shopifyignore
 assets/theme.css.map
+package-lock.json
