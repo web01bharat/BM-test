@@ -119,3 +119,11 @@ If your repository structure is invalid:
 - [Shopify GitHub Integration Documentation](https://shopify.dev/docs/themes/github)
 - [Shopify Theme Requirements](https://shopify.dev/docs/themes/architecture)
 - [GitHub Flow Documentation](https://docs.github.com/en/get-started/quickstart/github-flow)
+
+---
+
+## Next Steps
+
+Now that you have completed the GitHub integration setup, [return to the main documentation](../README.md#quick-start) to continue with development workflow.
+
+The next step will guide you through starting the development server and SCSS compiler to begin working on your theme.

@@ -98,6 +98,33 @@ EOL
 # Ensure the assets directory exists
 mkdir -p assets
 
+# Create or update .shopifyignore file to exclude scss directory
+if [ -f ".shopifyignore" ]; then
+  # Check if scss/ is already in .shopifyignore
+  if ! grep -q "scss/" .shopifyignore; then
+    echo "scss/" >> .shopifyignore
+    echo "Added scss/ to .shopifyignore file"
+  fi
+else
+  echo "scss/" > .shopifyignore
+  echo "Created .shopifyignore file with scss/ directory excluded"
+fi
+
+# Check if theme.liquid exists and contains theme.css reference
+if [ -f "layout/theme.liquid" ]; then
+  if ! grep -q "theme.css.*asset_url.*stylesheet_tag" layout/theme.liquid; then
+    echo "Warning: theme.css may not be properly included in your theme.liquid file."
+    echo "Please ensure it has this line somewhere in the <head> section:"
+    echo "{{ 'theme.css' | asset_url | stylesheet_tag }}"
+  else
+    echo "Confirmed theme.css is properly included in theme.liquid"
+  fi
+else
+  echo "Warning: layout/theme.liquid file not found."
+  echo "Please ensure to include theme.css in your main layout file:"
+  echo "{{ 'theme.css' | asset_url | stylesheet_tag }}"
+fi
+
 # Compile SCSS to CSS
 if command -v sass &> /dev/null; then
   echo "Compiling SCSS to CSS..."

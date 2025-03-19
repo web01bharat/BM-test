@@ -13,6 +13,39 @@ A standardized development environment and workflow for Shopify themes, compatib
 
 ## Quick Start
 
+### Option 1: Using the Setup Script (Recommended)
+
+We provide a setup script that automates the entire theme setup process in one step:
+
+```bash
+# Make the script executable
+chmod +x ./scripts/setup-theme.sh
+
+# For a new theme:
+./scripts/setup-theme.sh --store=your-store.myshopify.com
+
+# For an existing theme:
+./scripts/setup-theme.sh --store=your-store.myshopify.com --theme=your-theme-id
+
+# To automatically start the development server after setup:
+./scripts/setup-theme.sh --store=your-store.myshopify.com --dev
+```
+
+**What the script does:**
+- Creates necessary project directories
+- Initializes Git repository (if not already initialized)
+- Sets up environment files (.env)
+- Installs Shopify CLI if needed
+- Pulls an existing theme or initializes a new one
+- Creates configuration files (.theme-check.yml)
+- Can start the development server immediately with the --dev flag
+
+After running the script, you can skip to [GitHub integration](#set-up-github-integration) or directly to the [development workflow](#development-workflow) if you've already set up GitHub integration.
+
+### Option 2: Manual Setup
+
+If you prefer to set up your project manually, follow these steps:
+
 1.  **Clone the repository:**
 
     ```bash
@@ -24,6 +57,8 @@ A standardized development environment and workflow for Shopify themes, compatib
 
     ```bash
     npm install
+
+    (use node 16)
     ```
 
 3.  **Set up the theme:**
@@ -47,6 +82,29 @@ A standardized development environment and workflow for Shopify themes, compatib
     npm run watch
     
     # In another terminal: start dev server
+    npm run dev
+
+    (use  node 18)
+    ```
+
+5.  **Set up GitHub integration:**
+
+    Follow our [GitHub Integration Guide](https://github.com/TincanPipPip/shopify-development-template/blob/main/docs/github-integration.md) to configure the two-way synchronization between your local development environment, GitHub repository, and Shopify store. This guide will walk you through:
+    
+    * Downloading theme files
+    * Setting up the build process with GitHub
+    * Configuring the Shopify GitHub app
+    * Managing branch synchronization
+    
+    When you've completed the GitHub integration setup, return here to continue with the development workflow.
+
+6.  **Start development:**
+
+    ```bash
+    # In one terminal: compile SCSS
+    npm run watch
+    
+    # In another terminal: start Shopify dev server
     npm run dev
     ```
 
@@ -114,6 +172,33 @@ See [GitHub Integration Documentation](docs/github-integration.md) for detailed 
 
 * SCSS files are located in the `scss/` directory (not uploaded to Shopify)
 * Compiled CSS is output to `assets/theme.css` (uploaded to Shopify)
+
+### Option 1: Using the SCSS Setup Script (Recommended)
+
+We provide a setup script that creates the complete SCSS structure in one step:
+
+```bash
+# Make the script executable
+chmod +x ./scripts/setup-scss.sh
+
+# Run the setup script
+./scripts/setup-scss.sh
+```
+
+**What the script does:**
+- Creates an organized SCSS directory structure (`scss/` with subdirectories)
+- Sets up starter files with basic scaffolding (variables, mixins, component files)
+- Creates imports in the main SCSS file
+- Creates/updates `.shopifyignore` file to exclude the SCSS directory from Shopify
+- Verifies that `theme.css` is properly referenced in your theme.liquid file
+- Attempts to compile SCSS to CSS if Sass is installed
+- Creates the necessary files to begin development immediately
+
+After running the script, you can directly start editing the SCSS files and run the watcher.
+
+### Option 2: Manual Setup
+
+If you prefer to set up your SCSS structure manually:
 
 1.  **Set up SCSS structure:**
 

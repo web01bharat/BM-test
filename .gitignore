@@ -5,3 +5,4 @@ node_modules/
 .shopifyignore
 assets/theme.css.map
 package-lock.json
+.shopify
