@@ -99,13 +99,13 @@ Before connecting Shopify to GitHub, you need to set up a GitHub repository for 
    git push -u origin main
    ```
 
-4. **Create development branch**:
+4. **Create test branch**:
    ```bash
-   # Create and checkout a development branch
-   git checkout -b development
+   # Create and checkout a test branch
+   git checkout -b test
    
-   # Push development branch to GitHub
-   git push -u origin development
+   # Push test branch to GitHub
+   git push -u origin test
    ```
 
 Now that your GitHub repository is set up with team access, you can proceed to connect it to your Shopify store.
