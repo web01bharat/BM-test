@@ -56,6 +56,60 @@ Shopify doesn't allow theme assets to be stored in subdirectories (e.g., `assets
 
 ## Integration Setup Process
 
+### Prerequisite: Create a GitHub Repository
+
+Before connecting Shopify to GitHub, you need to set up a GitHub repository for your theme:
+
+1. **Create a new private repository**:
+   - Go to [GitHub](https://github.com/) and sign in
+   - Click the "+" icon in the top right and select "New repository"
+   - Name your repository (preferably matching your theme/store name)
+   - Select "Private" to keep your code secure
+   - Do not initialize with README, .gitignore, or license files
+   - Click "Create repository"
+
+2. **Add team members/collaborators**:
+   - Go to repository "Settings" > "Collaborators and teams"
+   - Under "Manage access", click "Add people" or "Add teams"
+   - Enter GitHub usernames or email addresses of your team members
+   - Select appropriate permission levels:
+     - **Admin**: Full repository control, including adding collaborators
+     - **Write**: Push to repository and create branches
+     - **Read**: View code only (not recommended for active developers)
+   - Click "Add [name]" to send invitation
+
+3. **Connect your local project to GitHub**:
+   ```bash
+   # Navigate to your theme directory
+   cd /path/to/your/theme
+   
+   # Initialize git (if not already done)
+   git init
+   
+   # Set the remote origin to your GitHub repository
+   git remote add origin https://github.com/your-username/your-repo-name.git
+   
+   # Add all files
+   git add .
+   
+   # Commit files
+   git commit -m "Initial theme commit"
+   
+   # Push to GitHub
+   git push -u origin main
+   ```
+
+4. **Create development branch**:
+   ```bash
+   # Create and checkout a development branch
+   git checkout -b development
+   
+   # Push development branch to GitHub
+   git push -u origin development
+   ```
+
+Now that your GitHub repository is set up with team access, you can proceed to connect it to your Shopify store.
+
 ### Method 1: Connect Existing Repository
 
 1. Navigate to **Online Store > Themes** in your Shopify admin.
