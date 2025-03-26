@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A template for Shopify theme development",
   "scripts": {
-    "dev": "shopify theme dev --path=.",
+    "dev": "shopify theme dev --environment dev",
     "pull": "shopify theme pull --path=.",
     "push": "shopify theme push --path=.",
     "check": "shopify theme check --path=.",

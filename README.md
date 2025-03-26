@@ -281,6 +281,17 @@ For more detailed information, see the [JavaScript Development Guide](docs/#%20S
     * `SHOPIFY_DEV_THEME_ID`
     * `SHOPIFY_PROD_THEME_ID`
 
+## Content Management Workflow
+
+This theme uses a specific workflow to handle admin content changes while maintaining clean version control:
+
+1. **Development themes**: Each branch connects to a separate development theme
+2. **JSON file handling**: Admin-modified JSON files are gitignored to prevent unwanted commits
+3. **Selective merging**: When desired, JSON content changes can be included in merges to preserve admin updates
+4. **Content preservation**: Regular backups of JSON configuration can be created using `npm run backup-admin`
+
+See [Content Management Guide](docs/content-management.md) for detailed workflow.
+
 ## Additional Resources
 
 * [Shopify Theme Development Documentation](https://shopify.dev/docs/themes)

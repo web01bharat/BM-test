@@ -142,6 +142,36 @@ To preview changes from a specific branch:
 2. Find the connected theme for your branch.
 3. Click **Preview** to view the theme.
 
+## Managing Content Changes
+
+When using GitHub integration with Shopify, you'll need a strategy to handle content changes made in the admin interface:
+
+### Content Change Workflow
+
+1. **Development Theme Changes**:
+   - Create a development theme for each feature branch
+   - Make code changes in your local environment
+   - Test changes by pushing to your development theme
+   - Admin may make content changes in this theme for testing
+
+2. **Content Preservation Options**:
+   - **Option A: Preserve content changes**
+     - When merging to main, include the JSON files with admin changes
+     - This preserves all content updates made in the Shopify admin
+   
+   - **Option B: Discard content changes**
+     - Before merging, reset JSON files to match production
+     - Use `git checkout origin/main -- config/settings_data.json sections/` to reset files
+     - This keeps only code changes, not admin content changes
+
+3. **Backup Process**:
+   - Before discarding content changes, create backups:
+   ```bash
+   # Create backup of current JSON files
+   mkdir -p backups/$(date +%Y%m%d)
+   shopify theme pull --path=backups/$(date +%Y%m%d) --only="config/settings_data.json sections/*.json"
+   ```
+
 ## Troubleshooting
 
 ### Synchronization Issues
