@@ -2,6 +2,21 @@
 
 A standardized development environment and workflow for Shopify themes, compatible with GitHub integration.
 
+## Prerequisites
+
+**Node.js Version 18 Required**
+
+Before starting, ensure you have Node.js version 18 installed. You can check your version with:
+```bash
+node --version
+```
+
+If you need to install or switch to Node 18, use a version manager like nvm:
+```bash
+nvm install 18
+nvm use 18
+```
+
 ## Features
 
 * Local development with hot reloading
@@ -46,22 +61,25 @@ After running the script, you can skip to [GitHub integration](#set-up-github-in
 
 If you prefer to set up your project manually, follow these steps:
 
-1.  **Clone the repository:**
+1.  **Ensure Node.js 18 is installed**:
+    ```bash
+    node --version  # Should show v18.x.x
+    ```
+
+2.  **Clone the repository:**
 
     ```bash
     git clone <repository_url>
     cd <repository_name>
     ```
 
-2.  **Install dependencies:**
+3.  **Install dependencies:**
 
     ```bash
     npm install
-
-    (use node 16)
     ```
 
-3.  **Set up the theme:**
+4.  **Set up the theme:**
 
     * For a new theme:
 
@@ -75,7 +93,13 @@ If you prefer to set up your project manually, follow these steps:
         npm run setup -- --store=your-store.myshopify.com --theme=your-theme-id
         ```
 
-4.  **Start development:**
+5.  **Update theme IDs in package.json**:
+    After setup, update the theme IDs in `package.json`:
+    - Replace `<YOUR_THEME_ID>` with your main theme ID
+    - Replace `<YOUR_TEST_THEME_ID>` with your test theme ID
+    - You can find theme IDs in Shopify admin under **Online Store > Themes**
+
+6.  **Start development:**
 
     ```bash
     # In one terminal: start SCSS watcher
@@ -84,10 +108,10 @@ If you prefer to set up your project manually, follow these steps:
     # In another terminal: start dev server
     npm run dev
 
-    (use  node 18)
+    (use node 18)
     ```
 
-5.  **Set up GitHub integration:**
+7.  **Set up GitHub integration:**
 
     Follow our [GitHub Integration Guide](https://github.com/TincanPipPip/shopify-development-template/blob/main/docs/github-integration.md) to configure the two-way synchronization between your local development environment, GitHub repository, and Shopify store. This guide will walk you through:
     
@@ -98,7 +122,7 @@ If you prefer to set up your project manually, follow these steps:
     
     When you've completed the GitHub integration setup, return here to continue with the development workflow.
 
-6.  **Start development:**
+8.  **Start development:**
 
     ```bash
     # In one terminal: compile SCSS
@@ -255,7 +279,7 @@ The template includes built-in support for custom JavaScript development:
 * Leverage existing Shopify JavaScript objects when available
 * Test across different browsers and devices
 
-For more detailed information, see the [JavaScript Development Guide](docs/#%20Shopify%20Development%20Environment%20Setup.md#javascript-development).
+For more detailed information, see the [JavaScript Development Guide](docs/shopify-development-environment-setup#javascript-development).
 
 ## Scaffolding Components
 
@@ -298,3 +322,4 @@ See [Content Management Guide](docs/content-management.md) for detailed workflow
 * [Liquid Template Language](https://shopify.dev/docs/themes/liquid)
 * [Shopify CLI Documentation](https://shopify.dev/docs/themes/tools/cli)
 * [Shopify GitHub Integration](https://shopify.dev/docs/themes/github)
+* [Development Environment Setup Guide](docs/shopify-development-environment-setup.md)

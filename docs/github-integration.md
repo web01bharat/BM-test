@@ -87,7 +87,7 @@ Before connecting Shopify to GitHub, you need to set up a GitHub repository for 
    git init
    
    # Set the remote origin to your GitHub repository
-   git remote add origin https://github.com/your-username/your-repo-name.git
+   git remote set-url origin https://github.com/your-username/your-repo-name.git
    
    # Add all files
    git add .
@@ -110,20 +110,32 @@ Before connecting Shopify to GitHub, you need to set up a GitHub repository for 
 
 Now that your GitHub repository is set up with team access, you can proceed to connect it to your Shopify store.
 
-### Method 1: Connect Existing Repository
+### Connect Repository to Shopify
 
-1. Navigate to **Online Store > Themes** in your Shopify admin.
-2. Click **Add Theme** and select **Connect from GitHub**.
-3. Authenticate with GitHub and select your repository.
-4. Choose the branch you want to connect.
-5. Click **Connect** to finalize the integration.
+1. **Navigate to Shopify Admin**:
+   - Go to **Online Store > Themes** in your Shopify admin
+   - Click the **"Add theme"** dropdown button
+   - Select **"Connect to GitHub"**
 
-### Method 2: Export Theme to GitHub
+2. **Select Repository**:
+   - Choose the relevant site/repository from the list
+   - If your new site isn't available, you'll need to configure GitHub app permissions
 
-1. Navigate to **Online Store > Themes** in your Shopify admin.
-2. Click on the three dots (⋮) next to your theme and select **Export to GitHub**.
-3. Select a target repository and branch name.
-4. Click **Export** to create the integration.
+3. **Configure GitHub App Permissions** (if needed):
+   - Go to [GitHub App Installations](https://github.com/settings/installations/)
+   - Find the Shopify GitHub app
+   - Click **"Configure"**
+   - Under **"Repository access"**, select **"All repositories"** or add your specific repository
+   - If you don't have access to the repository, contact a senior developer with access to configure this for you
+
+4. **Connect Branches**:
+   - Once permissions are configured, return to Shopify admin
+   - Your repository should now be visible in the side panel
+   - Select both **"main"** and **"test"** branches
+   - This will create two separate themes representing each branch as different theme versions
+   - Click **"Connect"** to finalize the integration
+
+**Note**: Each branch will create a separate theme in your Shopify store, allowing you to work on different versions simultaneously.
 
 ## Branch Management Best Practices
 
